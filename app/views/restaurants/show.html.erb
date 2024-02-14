@@ -1,0 +1,19 @@
+<div class="banner d-flex align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/?food); color: white; height: 50vh">
+  <div class="container">
+    <h1><%= @restaurant.name %></h1>
+    <p><%= @restaurant.category %></p>
+    <p><%= @restaurant.address %></p>
+  </div>
+</div>
+
+<h2>Reviews:</h2>
+<%= render "reviews/form" %>
+
+<% @restaurant.reviews.each do |review| %>
+  <div class="card-product">
+    <div class="card-product-infos">
+      <p>Rating: <%= review.rating %>/5</p>
+      <p><%= review.content %></p>
+    </div>
+  </div>
+<% end %>
