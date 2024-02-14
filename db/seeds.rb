@@ -9,8 +9,10 @@
 #   en
 categories = ["chinese", "italian", "japanese", "french", "belgian"]
 
-10.times do |restaurant|
+5.times do |restaurant|
   restaurant = Restaurant.create(name: Faker::Restaurant.name, address: Faker::Address.full_address, phone_number: Faker::PhoneNumber.phone_number, category: categories.sample)
+  restaurant.url = "https://source.unsplash.com/random/?#{restaurant.category}-food&#{restaurant.id}"
+  restaurant.save
 end
 
 restaurants = Restaurant.all

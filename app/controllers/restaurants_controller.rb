@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
-    @url = "https://source.unsplash.com/random/?food}"
   end
 
   def show
@@ -15,6 +14,8 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @url = "https://source.unsplash.com/random/?#{@restaurant.category}"
+    @restaurant.url = @url
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
